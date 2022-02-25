@@ -5,19 +5,27 @@ import { useState } from "react"
 const App = () => {
   const [task, add_task] = useState([])
   const [text, onChangeText] = useState("")
-
+  const [edit , setEdit] = useState(true)
+  const [editIndex , setEditIndex] = useState()
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>TODO List</Text>
-      <View style={styles.fixToText}>
+      {/* <View style={styles.fixToText}>
+
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+        /> */}
+        {edit ? 
+        <View style={styles.fixToText}>
 
         <TextInput
           style={styles.input}
           onChangeText={onChangeText}
           value={text}
         />
-
         <Button
           title="Add Task"
         
@@ -27,8 +35,32 @@ const App = () => {
           add_task([...task, text])
           onChangeText("")
         }}
-        />
+        /> 
       </View>
+         : 
+        <View style={styles.fixToText}>
+          <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+          placeholder={task[editIndex]}
+        />
+        <Button
+          title="edit Task"
+        
+        style={styles.button}
+        onPress={() => {
+          console.log("press edit button",editIndex)
+          const editItem = [...task]
+          editItem[editIndex] = text
+          add_task(editItem)
+          onChangeText("")
+          setEdit(true)
+        }}
+        />
+        </View> 
+        }
+      {/* </View> */}
 
       <ScrollView style={styles.scrollView}>
         {task.map((task_itam, taskInd) => {
@@ -36,6 +68,15 @@ const App = () => {
             <View style={styles.fixToText} key={taskInd}>
 
               <Text style={styles.task}> {taskInd + 1}. {task_itam}</Text>
+              <Button
+                title="edit"
+                // style={styles.button}
+                onPress={() => {
+                  console.log("edit button")
+                  setEdit(false)
+                  setEditIndex(taskInd)
+                }}
+              />
               <Button
                 title="delete"
                 color="red"
@@ -112,7 +153,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    width: 300,
+    width: 250,
   }
 });
 
