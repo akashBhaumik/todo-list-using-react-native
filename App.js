@@ -1,11 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, TouchableOpacity , SafeAreaView } from "react-native";
-import { useState } from "react"
+import { useState } from "react";
+import  FontAwesomeIcon  from "@fortawesome/react-fontawesome";
+// import fontawesome from '@fortawesome/fontawesome'
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
+
+// fontawesome.library.add(faPencil);
 const App = () => {
   const [task, add_task] = useState([])
   const [text, onChangeText] = useState("")
-  const [edit, setEdit] = useState(true)
+  const [edit, setEdit] = useState(false)
   const [editIndex, setEditIndex] = useState()
 
   return (
@@ -20,57 +25,64 @@ const App = () => {
         /> */}
       {edit ?
         <View style={styles.fixToText}>
-          <View
-            style={styles.textInput}
-          >
-
-            <TextInput
-              style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
-            />
-          </View>
-          {/* <View style={styles.button}> */}
-          <TouchableOpacity
-            style={styles.addButton}
-
-            onPress={() => {
-              console.log("press button", add_task)
-              add_task([...task, text])
-              onChangeText("")
-            }} >
-            <Text>Add</Text>
-          </TouchableOpacity>
-
-
+        <View
+          style={styles.textInput}
+        >
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder={task[editIndex]}
+          />
         </View>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={() => {
+            console.log("press edit button", editIndex)
+            const editItem = [...task]
+            editItem[editIndex] = text
+            add_task(editItem)
+            onChangeText("")
+            setEdit(false)
+          }}>
+          <Text>Edit</Text>
+        </TouchableOpacity>
+
+      </View>
+
+       
         // </View>
         :
         <View style={styles.fixToText}>
-          <View
-            style={styles.textInput}
-          >
-            <TextInput
-              style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
-              placeholder={task[editIndex]}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.editButton}
-            onPress={() => {
-              console.log("press edit button", editIndex)
-              const editItem = [...task]
-              editItem[editIndex] = text
-              add_task(editItem)
-              onChangeText("")
-              setEdit(true)
-            }}>
-            <Text>Edit</Text>
-          </TouchableOpacity>
+        <View
+          style={styles.textInput}
+        >
 
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+          />
         </View>
+        {/* <View style={styles.button}> */}
+        <TouchableOpacity
+          style={styles.addButton}
+
+          onPress={() => {
+            console.log("press button", text == '')
+            if(text == ''){
+              add_task([...task])
+            }else {
+
+              add_task([...task, text])
+            }
+            onChangeText("")
+          }} >
+          <Text>Add</Text>
+        </TouchableOpacity>
+
+
+      </View>
       }
       {/* </View> */}
 
@@ -85,10 +97,11 @@ const App = () => {
                 // style={styles.button}
                 onPress={() => {
                   console.log("edit button")
-                  setEdit(false)
+                  setEdit(true)
                   setEditIndex(taskInd)
                 }}
               >
+                {/* <FontAwesomeIcon icon="fapencil" /> */}
                 <Text>Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity
