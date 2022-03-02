@@ -3,27 +3,27 @@ import { View, Text, SafeAreaView, FlatList, Image, StyleSheet, ScrollView } fro
 import { useState, useEffect, } from "react";
 import { getUser } from "../services/apiConfig";
 
-const User = () => {
-    const [users, setUsers] = useState([]);
-    console.log(users)
+const User = ({userProperty}) => {
+    // const [users, setUsers] = useState([]);
+    console.log("props == ",userProperty)
 
-    useEffect(() => {
-        let mounted = true;
-        getUser().then((items) => {
-            console.log("users items= ", items.data.data)
-            if (mounted) {
-                setUsers(items.data.data)
-            }
-        })
-        return () => mounted = false;
-    }, [])
+    // useEffect(() => {
+    //     let mounted = true;
+    //     getUser().then((items) => {
+    //         console.log("users items= ", items.data.data)
+    //         if (mounted) {
+    //             setUsers(items.data.data)
+    //         }
+    //     })
+    //     return () => mounted = false;
+    // }, [])
 
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
-                {users.map((user) => {
+                {userProperty.map((user) => {
                     return (
-                        <View key={user.id} style={styles.fixToText} >
+                        <View key={user.id} style={styles.userCart} >
                             <View style={styles.image}>
                                 <Image
                                     style={styles.tinyLogo}
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         marginLeft : 10
 
     },
-    fixToText: {
+    userCart: {
         flexDirection: 'row',
         alignItems: "center",
         marginTop: 10,

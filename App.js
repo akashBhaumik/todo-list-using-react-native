@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Todo from "./components/Todo"
 import Login from "./components/Login";
 import User from "./components/User";
+import UsersScreen from "./screens/UsersScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,9 +16,9 @@ const App = () => {
 
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="OPEN" component={Login} />
-        <Stack.Screen name="Todo" component={Todo}  options={{ title: 'Overview' }} />
-        <Stack.Screen name="user" component={User}   options={{ title: 'Users' }}/>
+        <Stack.Screen name="open" component={Login} options={{ title: 'Home' }}/>
+        <Stack.Screen name="todo" component={Todo}  options={{ title: 'Todo' }} />
+        <Stack.Screen name="userScreen" component={UsersScreen}   options={{ title: 'Users' }}/>
 
       </Stack.Navigator>
     </NavigationContainer>

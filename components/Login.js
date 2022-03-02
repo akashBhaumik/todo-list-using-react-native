@@ -7,7 +7,7 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
                 style={styles.openTodo}
                 onPress={() =>
-                    navigation.navigate('Todo')
+                    navigation.navigate('todo')
                 }
             >
                 <Text>Open Todo App</Text>
@@ -15,7 +15,7 @@ const Login = ({ navigation }) => {
             <TouchableOpacity
                 style={styles.user}
                 onPress={() =>
-                    navigation.navigate('user')
+                    navigation.navigate('userScreen')
                 }
             >
                 <Text>Go To User</Text>
