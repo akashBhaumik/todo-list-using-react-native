@@ -4,19 +4,7 @@ import { useState, useEffect, } from "react";
 import { getUser } from "../services/apiConfig";
 
 const User = ({userProperty}) => {
-    // const [users, setUsers] = useState([]);
     console.log("props == ",userProperty)
-
-    // useEffect(() => {
-    //     let mounted = true;
-    //     getUser().then((items) => {
-    //         console.log("users items= ", items.data.data)
-    //         if (mounted) {
-    //             setUsers(items.data.data)
-    //         }
-    //     })
-    //     return () => mounted = false;
-    // }, [])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -73,7 +61,7 @@ const styles = StyleSheet.create({
         borderRadius : 50,
         backgroundColor: "green",
         bottom: 5,
-        right: 40,
+        right: 35,
         position: "absolute"
     },
     scrollView: {
@@ -81,6 +69,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 2,
+        position : "relative"
     },
     profile: {
         flex: 4,

@@ -20,6 +20,14 @@ const Login = ({ navigation }) => {
             >
                 <Text>Go To User</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.imageChoose}
+                onPress={() =>
+                    navigation.navigate('chooseImage')
+                }
+            >
+                <Text>Set Image</Text>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -35,6 +43,13 @@ const styles = StyleSheet.create({
     },
     user : {
         backgroundColor: "#C1F8CF",
+        padding: 10,
+        fontSize: 20,
+        borderRadius: 6,
+        marginTop : 10
+    },
+    imageChoose : {
+        backgroundColor: "#94B49F",
         padding: 10,
         fontSize: 20,
         borderRadius: 6,
