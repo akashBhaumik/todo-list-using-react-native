@@ -1,12 +1,25 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import { useState } from "react";
+import { useFonts, Inter_900Black , Inter_400Regular, Inter_600SemiBold, Inter_700Bold} from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
+
 
 const Todo = () => {
-  const [task, add_task] = useState([])
-  const [text, onChangeText] = useState("")
-  const [edit, setEdit] = useState(false)
-  const [editIndex, setEditIndex] = useState()
+  const [task, add_task] = useState([]);
+  const [text, onChangeText] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [editIndex, setEditIndex] = useState();
+  let [fontsLoaded] = useFonts({
+    Inter_900Black,
+    Inter_400Regular,
+    Inter_600SemiBold,
+    Inter_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -33,7 +46,7 @@ const Todo = () => {
               onChangeText("")
               setEdit(false)
             }}>
-            <Text>Edit</Text>
+            <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Edit</Text>
           </TouchableOpacity>
 
         </View>
@@ -62,7 +75,7 @@ const Todo = () => {
               }
               onChangeText("")
             }} >
-            <Text>Add</Text>
+            <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Add</Text>
           </TouchableOpacity>
 
 
@@ -74,7 +87,7 @@ const Todo = () => {
           return (
             <View style={styles.fixToText} key={taskInd}>
 
-              <Text style={styles.task}> {taskInd + 1}. {task_itam}</Text>
+              <Text style={styles.task}> {taskInd + 1}.  {task_itam}</Text>
               <TouchableOpacity
                 style={styles.editTask}
                 onPress={() => {
@@ -83,7 +96,7 @@ const Todo = () => {
                   setEditIndex(taskInd)
                 }}
               >
-                <Text>Edit</Text>
+                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.deleteTask}
@@ -95,7 +108,7 @@ const Todo = () => {
 
                 }}
               >
-                <Text>Delete</Text>
+                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Delete</Text>
               </TouchableOpacity>
             </View>
 
@@ -124,7 +137,7 @@ const styles = StyleSheet.create({
     color: "#20232a",
     textAlign: "center",
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: 'Inter_400Regular'
   },
   textInput: {
     height: 40,
@@ -137,6 +150,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 6,
+    fontFamily : "Inter_900Black",
     // width: 270,
   },
   addButton: {
@@ -197,10 +211,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: "#61dafb",
     color: "#20232a",
-    textAlign: "center",
+    // textAlign: "",
+    justifyContent : "flex-start",
     fontSize: 20,
-    fontWeight: "bold",
     flex: 2.5,
+    fontFamily : "Inter_400Regular"
   }
 });
 

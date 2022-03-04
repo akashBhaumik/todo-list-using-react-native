@@ -1,7 +1,39 @@
 import React from "react";
-import {StyleSheet , View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import AppLoading from 'expo-app-loading';
+import {
+    useFonts,
+    Inter_100Thin,
+    Inter_200ExtraLight,
+    Inter_300Light,
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_800ExtraBold,
+    Inter_900Black,
+} from '@expo-google-fonts/inter';
+
 
 const Login = ({ navigation }) => {
+
+    let [fontsLoaded] = useFonts({
+        Inter_100Thin,
+        Inter_200ExtraLight,
+        Inter_300Light,
+        Inter_400Regular,
+        Inter_500Medium,
+        Inter_600SemiBold,
+        Inter_700Bold,
+        Inter_800ExtraBold,
+        Inter_900Black,
+    });
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    }
+
+
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity
@@ -10,7 +42,7 @@ const Login = ({ navigation }) => {
                     navigation.navigate('todo')
                 }
             >
-                <Text>Open Todo App</Text>
+                <Text style={{ fontFamily: 'Inter_400Regular' , fontSize : 20}}>Open Todo App</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.user}
@@ -18,7 +50,7 @@ const Login = ({ navigation }) => {
                     navigation.navigate('userScreen')
                 }
             >
-                <Text>Go To User</Text>
+                <Text style={{ fontFamily: 'Inter_400Regular' , fontSize : 20 }}>Go To User</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.imageChoose}
@@ -26,7 +58,7 @@ const Login = ({ navigation }) => {
                     navigation.navigate('chooseImage')
                 }
             >
-                <Text>Set Image</Text>
+                <Text style={{ fontFamily: 'Inter_400Regular' , fontSize : 20}}>Set Image</Text>
             </TouchableOpacity>
         </View>
     )
@@ -41,18 +73,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         borderRadius: 6,
     },
-    user : {
+    user: {
         backgroundColor: "#C1F8CF",
         padding: 10,
         fontSize: 20,
         borderRadius: 6,
-        marginTop : 10
+        marginTop: 10
     },
-    imageChoose : {
+    imageChoose: {
         backgroundColor: "#94B49F",
         padding: 10,
         fontSize: 20,
         borderRadius: 6,
-        marginTop : 10
+        marginTop: 10
     }
 })

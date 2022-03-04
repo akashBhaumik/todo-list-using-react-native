@@ -1,10 +1,19 @@
 import React from "react";
 import { View, Text, SafeAreaView, FlatList, Image, StyleSheet, ScrollView } from "react-native";
-import { useState, useEffect, } from "react";
-import { getUser } from "../services/apiConfig";
+import { useFonts, Inter_300Light , Inter_200ExtraLight} from '@expo-google-fonts/inter';
+import AppLoading from 'expo-app-loading';
 
 const User = ({userProperty}) => {
     console.log("props == ",userProperty)
+
+    let [fontsLoaded] = useFonts({
+        Inter_300Light,
+        Inter_200ExtraLight
+      });
+    
+      if (!fontsLoaded) {
+        return <AppLoading />;
+      }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -25,7 +34,7 @@ const User = ({userProperty}) => {
                             <View style={styles.profile}>
 
                                 <Text style={styles.name}>{user.first_name} {user.last_name}</Text>
-                                <Text >{user.email} </Text>
+                                <Text style={{fontFamily : "Inter_200ExtraLight"}} >{user.email} </Text>
                             </View>
 
                         </View>
@@ -76,7 +85,8 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 25,
-        fontWeight: "bold"
+        // fontWeight: "bold",
+        fontFamily : "Inter_500Medium"
     }
 });
 
