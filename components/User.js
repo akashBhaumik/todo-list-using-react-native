@@ -1,19 +1,8 @@
 import React from "react";
 import { View, Text, SafeAreaView, FlatList, Image, StyleSheet, ScrollView } from "react-native";
-import { useFonts, Inter_300Light , Inter_200ExtraLight} from '@expo-google-fonts/inter';
-import AppLoading from 'expo-app-loading';
 
 const User = ({userProperty}) => {
     console.log("props == ",userProperty)
-
-    let [fontsLoaded] = useFonts({
-        Inter_300Light,
-        Inter_200ExtraLight
-      });
-    
-      if (!fontsLoaded) {
-        return <AppLoading />;
-      }
 
     return (
         <SafeAreaView style={styles.container}>

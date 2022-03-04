@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import { useState } from "react";
-import { useFonts, Inter_900Black , Inter_400Regular, Inter_600SemiBold, Inter_700Bold} from '@expo-google-fonts/inter';
-import AppLoading from 'expo-app-loading';
 
 
 const Todo = () => {
@@ -10,16 +8,6 @@ const Todo = () => {
   const [text, onChangeText] = useState("");
   const [edit, setEdit] = useState(false);
   const [editIndex, setEditIndex] = useState();
-  let [fontsLoaded] = useFonts({
-    Inter_900Black,
-    Inter_400Regular,
-    Inter_600SemiBold,
-    Inter_700Bold
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <SafeAreaView style={styles.container}>
