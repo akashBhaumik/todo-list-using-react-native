@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Button, TextInput, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import { useState } from "react";
+import Toast from 'react-native-toast-message';
 
 
 const Todo = () => {
@@ -33,6 +34,10 @@ const Todo = () => {
               add_task(editItem)
               onChangeText("")
               setEdit(false)
+              Toast.show({
+                type: 'success',
+                text1: 'Toast edited successfully 👋'
+              });
             }}>
             <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Edit</Text>
           </TouchableOpacity>
@@ -60,8 +65,13 @@ const Todo = () => {
               } else {
 
                 add_task([...task, text])
+                Toast.show({
+                  type: 'success',
+                  text1: 'Toast added successfully 👋'
+                });
               }
               onChangeText("")
+              
             }} >
             <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Add</Text>
           </TouchableOpacity>
@@ -93,6 +103,10 @@ const Todo = () => {
                   let filter_data = task.filter((filter_task, filter_ind) => filter_ind !== taskInd)
                   console.log(filter_data)
                   add_task(filter_data)
+                  Toast.show({
+                    type: 'error',
+                    text1: 'Toast deleted 👋'
+                  });
 
                 }}
               >

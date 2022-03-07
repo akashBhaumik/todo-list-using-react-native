@@ -6,7 +6,9 @@ import Login from "./components/Login";
 import User from "./components/User";
 import UsersScreen from "./screens/UsersScreen";
 import SelectImage from "./screens/SelectImage";
+import Toast from 'react-native-toast-message';
 import AppLoading from 'expo-app-loading';
+
 import {
   useFonts,
   Inter_100Thin,
@@ -47,8 +49,8 @@ const App = () => {
           <Stack.Screen name="todo" component={Todo} options={{ title: 'Todo' }} />
           <Stack.Screen name="userScreen" component={UsersScreen} options={{ title: 'Users' }} />
           <Stack.Screen name="chooseImage" component={SelectImage} options={{ title: 'Select Image' }} />
-
         </Stack.Navigator>
+        <Toast />
       </NavigationContainer>
     )
   }
