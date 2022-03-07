@@ -30,6 +30,14 @@ const Login = ({ navigation }) => {
             >
                 <Text style={{ fontFamily: 'Inter_400Regular' , fontSize : 20}}>Set Image</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.user}
+                onPress={() =>
+                    navigation.navigate('userForm')
+                }
+            >
+                <Text style={{ fontFamily: 'Inter_400Regular' , fontSize : 20}}>User Form</Text>
+            </TouchableOpacity>
         </View>
     )
 }

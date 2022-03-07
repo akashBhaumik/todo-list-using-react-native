@@ -94,7 +94,7 @@ const Todo = () => {
                   setEditIndex(taskInd)
                 }}
               >
-                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Edit</Text>
+                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 12}}>Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.deleteTask}
@@ -110,7 +110,7 @@ const Todo = () => {
 
                 }}
               >
-                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 15}}>Delete</Text>
+                <Text style={{fontFamily: 'Inter_600SemiBold' , fontSize : 12}}>Delete</Text>
               </TouchableOpacity>
             </View>
 

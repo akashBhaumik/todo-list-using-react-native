@@ -10,3 +10,14 @@ export const getUser = param => {
         }
     });
 }
+
+export const uploadForm = params => {
+    return axios({
+        method: "post",
+        url: 'https://reqres.in/api/users',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: params
+    })
+}

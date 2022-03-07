@@ -21,6 +21,7 @@ import {
   Inter_800ExtraBold,
   Inter_900Black,
 } from '@expo-google-fonts/inter';
+import UserForm from "./screens/UserForm";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,7 @@ const App = () => {
           <Stack.Screen name="todo" component={Todo} options={{ title: 'Todo' }} />
           <Stack.Screen name="userScreen" component={UsersScreen} options={{ title: 'Users' }} />
           <Stack.Screen name="chooseImage" component={SelectImage} options={{ title: 'Select Image' }} />
+          <Stack.Screen name="userForm" component={UserForm} options={{ title: 'create Form' }} />
         </Stack.Navigator>
         <Toast />
       </NavigationContainer>
